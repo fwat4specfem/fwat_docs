@@ -3,8 +3,9 @@ Install the package
 
 Install FWAT-v1.1
 -----------------
-The FWAT-v1.1 is based on the stable version of SPECFEM3D last modified
-on Aug 30, 2018 with a commit number of 42abac6d18 on Github.
+The FWAT-v1.1 is based on the stable version of `SPECFEM3D <https://github.com/geodynamics/specfem3d/>`_ 
+last modified on Aug 30, 2018 with a commit number of 42abac6d18 on Github.
+
 
 .. code-block:: bash
 
@@ -59,12 +60,12 @@ Notes on segmentation fault/floating
     NDIM = 1000000
     NWINDOWS = 2000
 
-How to Modify the FWAT to fit your version of SPECFEM3D
--------------------------------------------------------
+How to Modify the FWAT to fit your version of `SPECFEM3D`
+------------------------------------------------------------
 
 If you have to use a different version, your may take
 the following steps to modify the FWAT package in order to fit your version
-of SPECFEM3D.
+of `SPECFEM3D`.
 
 .. code-block:: bash
  
