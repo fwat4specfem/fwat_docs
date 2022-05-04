@@ -24,3 +24,4 @@ If you use FWAT for your research and prepare publications, please consider citi
    introduction
    installation
    package_structure
+   tutorial
