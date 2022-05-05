@@ -1,5 +1,5 @@
-Introduction
-============
+1. Introduction
+=================
 
 The basic idea of **FWAT** is to iteratively minimize the misfit function of measurements between data and synthetics.
 According to the job submission schedule, the inversion can be divided into three stages as shown in Figure 1.
@@ -14,60 +14,59 @@ In **Stage III**, a line search method is adopted to determine the optimal step 
 
     Figure 1. Workflow of FWAT.
 
-**FWAT** will generate six main programs in the bin directory:
+**FWAT** will generate six main programs in the **bin** directory:
 
 - `xfwat0_forward_data` is a forward only MPI program, normally used for synthetic tests.
-- `xfwat1_fwd_measure_adj` is a MPI program for Stage I
-- `xfwat2_postproc_opt` is a MPI program for Stage II
-- `xfwat3_linesearch` is a MPI program for Stage III
+- `xfwat1_fwd_measure_adj` is a MPI program for **Stage I**
+- `xfwat2_postproc_opt` is a MPI program for **Stage II**
+- `xfwat3_linesearch` is a MPI program for **Stage III**
 - `xfullwave_adjoint_tomo` is not finished yet and planned to combine xfwat1, xfwat2 and 
   xfwat3 for fast computations of small-scale inversions.
-- `xmeasure_adj` is a single program to test the measure_adj
+- `xmeasure_adj` is a single program to test the `measure_adj <https://github.com/geodynamics/specfem3d/tree/master/utils/ADJOINT_TOMOGRAPHY_TOOLS/measure_adj>`_
 
 Developer
 ---------
 
-**Lead developer**
+`Kai Wang <https://sites.google.com/view/kaikaiwang>`_, wangkaim8@gmail.com, maintainer 
 
-**Kai Wang**, wangkaim8@gmail.com 
+  The **FWAT** package (v 1.0) was first developed by Kai Wang during his postdoc studies at Macquarie University (2020/2-present) 
+  and the University of Toronto (2018/12-2019/12). This inversion package has been tested across several seismic projects
+  in research groups of Prof. `Liu Qinya <https://www.physics.utoronto.ca/~liuqy/>`_ and Prof. `Yingjie Yang <https://www.yingjieyang.com/>`_.
 
-  The FWAT package (version 1.0) was first developed by Kai Wang during his postdoc period at Macquarie University (2020/2-present) and the University of Toronto (2018/12-2019/12).
-  Then, this inversion package has been tested across several seismic projects in Prof. Liu Qinya's group.
-
-**Contributors**
 
 *Bin He*, binhebj@gmail.com, joined in Mar 2021.
 
- Modified files that interface with the SPECFEM3D package to update the FWATv1.0 to version 1.1. 
+ Modified files that interface with the `SPECFEM3D` package to update **FWAT** v1.0 to v1.1. 
 
-*Nanqiao Du*, jointed in Nov 2021. 
+*Nanqiao Du*, nanqiao.du@mail.utoronto.ca, jointed in Nov 2021. 
 
-*Mijian Xu*, jointed in Jan 2022.
+  Working on API interfaces.
 
+*Mijian Xu*,  gomijianxu@gmail.com, jointed in Jan 2022.
 
-Citations
----------
+  Working on **FWAT** of receiver functions, python tools for model visualization.
+
 
 Changelog
 ---------
 
-*FWAT-v1.1*, released on Mar 24, 2021
+``FWAT v1.1``, released on Mar 24, 2021
 
 Main contributors: Bin He, Kai Wang
 
-- Update FWAT to the latest stable version of SPECFEM3D released on 2018-08-30.
+- Update FWAT based on the latest stable version of `SPECFEM3D` released on 2018-08-30.
 - Update FWAT.PAR.
 
-*FWAT-v1.0*, released on Oct 6, 2020
+``FWAT v1.0``, released on Oct 6, 2020
 
 Main contributor: Kai Wang
 
-- Noise FWI, teleFWI and their joint inversion. Codes tested in central California (Wang et al., 2020, JGR)
-- First version of the inversion workflow based on SPECFEM3D released on 2018-02-11.
+- FWAT of ambient noise , teleseismic P waves and their joint/alternating inversion. Codes tested in central California (Wang et al., 2020, JGR)
+- First version of the inversion workflow based on `SPECFEM3D` released on 2018-02-11.
 
 Support
 -------
-**Kai Wang** was supported by the Postdoctoral Fellow program (2020/2-2021/12) at Macquarie University founded by the Australian Research Council Discovery Grant DP190102940.
+**Kai Wang** was supported by the Postdoctoral Fellow program (2020/2-2021/10) at Macquarie University founded by the Australian Research Council Discovery Grant DP190102940.
 
 **Kai Wang** was supported by the Postdoctoral Fellow program (2018/12-2019/12) at the University of Toronto founded by NSERC Discovery Grant 487237. 
 
@@ -76,9 +75,9 @@ Future update plan
 
 There are several aspects can be considered for improvements in the future, including:
 
-#. Add an inversion option for local earthquake (leq) tomography (``onging``).
-#. Add CMT3D for source inversions prior to structure inversions (``onging``).
+#. Add an inversion option for local earthquake (leq) tomography (``onging``, Kai Wang).
+#. Add CMT3D for source inversions prior to structure inversions (``onging``, Kai Wang).
+#. Python tool for model visualization (``ongoing``, Mijian Xu).
 #. Add multicomponent ANAT.
-#. Update optimize to invert for azimuthal anisotropy.
-#. Python tool for model visualization.
+#. Update **optimize** to invert for azimuthal anisotropy.
 

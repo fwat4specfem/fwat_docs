@@ -1,4 +1,4 @@
-Tutorial
+4. Tutorial
 ==================
 
 This tutorial will teach you how to perform an iterative full waveform inversion with **FWAT** and **SPECFEM3D**.
@@ -7,19 +7,36 @@ This tutorial will teach you how to perform an iterative full waveform inversion
     :local:
     :depth: 3
 
-1. Preparing input files
----------------------------
+1.1 Prepare inputs for FWAT
+-----------------------------------
 
-Before running any iteration, the users should write their own scripts to make **data** and **src_rec** in
-the format described above. The corresponding example scripts are `generate_data .bash` and `mk_forcesolution.bash`.
+Before running FWAT, the user should first make a new project by copy the folder **example_scripts**.
+For example, to build a new seismic project named ``FWAT_test``, run the following commands:
 
-2. Build SEM mesh and initial model
---------------------------------------
+.. code-block:: bash
+ 
+ $: mkdir FWAT_test
+ $: cd FWAT_test
+ $: cp -r ${path_to_specfem3d}/src/fullwave_adjoint_tomo/example_scripts/* .
 
-The inputs files in ``specfem3d`` should be tested to make sure that they are ready for running any simulations.
+After that, the user should write their own scripts to make **data** and **src_rec** in
+the format described in section 3. The corresponding example scripts are `generate_data .bash` and `mk_forcesolution.bash`.
+
+1.2 Prepare inputs for SPECFEM3D and build mesh
+------------------------------------------------
+Run the following commands for the preparation of `SPECFEM3D`:
+
+.. code-block:: bash
+
+ $: ln -s  ${path_to_specfem3d}/DATA .
+ $: ln -s  ${path_to_specfem3d}/bin .
+ $: mkdir OUTPUT_FILES
+ $: mkdir OUTPUT_FILES/DATABASES_MPI 
+
+The input files for ``specfem3d`` should be tested to make sure that they are ready for running any simulations.
 This means that the user should set up the meshing files at DATA/meshfem3D_files, initial xyz model at 
-specfem3d/DATA/tomo_files or gll model in a user defined folder, and DATA/Par_file. Set APPROXIMATE_HESS_KL = .true.
-and USE_RHO_SCALING = .true. in Par_file, which is used in the post processing and model update.
+DATA/tomo_files or gll model in a user defined folder, and DATA/Par_file. Set APPROXIMATE_HESS_KL = .true.
+and USE_RHO_SCALING = .true. in Par_file, which will be used in **Stage II**.
 
 For testing if the mesh and initial model is correctly set up, set SAVE_MESH_FILE = .true. in Par_file and
 plot the velocity model procXXXXXX.bin files in OUTPUT_FILES/DATABASES_MPI, and set it back to .false. after the test.
@@ -34,10 +51,11 @@ Uncomment the following lines in the PBS script `pbs_fwat1_fwd_measure_adj.sh` o
 The user should also check `output_mesher.txt` and `output_meshfem3D.txt` for the minimum period resolved,
 suggested time step, and other useful information regarding the meshing and solver parameters.
 
-3. Prepare **fwat_params**
+1.3 Prepare **fwat_params**
 ----------------------------
 
-There are two parameter files: `FWAT.PAR` and `MEASUREMENT.PAR`. The format of `FWAT.PAR` is:
+There are two user-defined parameter files of **FWAT**: `FWAT.PAR` and `MEASUREMENT.PAR`.
+The format of `FWAT.PAR` is:
 
 .. code-block:: bash
 
@@ -134,11 +152,11 @@ The format of `MESUREMENT.PAR` is the same as that used in the software ``meaure
 
    Remember to change tstart, DT, npts, imeas, channel, TSHIFT_MIN/TSHIFT_MAX, DLNA_MIN/DLNA_MAX, CC_MIN, ITAPER.
 
-   For FWI of diffrent data types (noise/tele), I recommend to use different parameter files, such as 
+   For FWAT of diffrent data types (noise/tele), I recommend to use different parameter files, such as 
    FWAT.PAR.noise/FWAT.PAR.tele, MEASUREMENT.PAR.noise/MEASUREMENT.PAR.tele.
 
-4. Running forward and adjoint simulations
--------------------------------------------
+1.4 Running forward and adjoint simulations (Stage I)
+-------------------------------------------------------
 
 As long as the SEM mesh/model is set up, comment out the following lines in the PBS script 
 `pbs_fwat1_fwd_measure_adj.sh` or SLURM script `sbash_fwat1_fwd_measure_adj.sh`.
@@ -187,8 +205,8 @@ adjoint sources (run_opt=2), and adjoint simulations (run_opt=3). The program ca
 3. Run adjoint simulations to obtain event kernels, sum and save them into one event gradient. In the `FWAT.PAR`,
    we have an option (SAVE_OUTPUT_EACH_EVENT: .true.) to save each event kernel.
 
-5. Post-processing and model update
-------------------------------------
+1.5 Post-processing and model update (Stage II)
+-------------------------------------------------------
 Then, run `submit_job_fwat2.sh` to do post-processing on event kernels and obtain the total misfit gradient and update the model.
 
 .. code-block:: bash
@@ -233,8 +251,8 @@ This program can be divided into three parts:
  ./optimize/MODEL_M??_step0.020, ./optimize/MODEL_M??_step0.040, etc. Then, you should run a line search in **Stage III**.
 
 
-6. Line search for optimal step length
----------------------------------------
+1.6 Line search for optimal step length (Stage III)
+-----------------------------------------------------
 
 After all trial models are generated (DO_LS: .true.), we use them to do a line search in order to obtain the optimal step length.
 The script responsible for this is `submit_job_fwat3.sh`.

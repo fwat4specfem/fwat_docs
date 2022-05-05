@@ -6,7 +6,9 @@
 Welcome to FWAT's documentation!
 ================================
 
-This is the documentation for the fortran inversion package of **FWAT**, which provides an inversion workflow of Full Waveform Adjoint Tomography for seismic wavefield imaging based on the SPECFEM3D. For further information and contact information please see below website:
+This is the documentation for the fortran inversion package of **FWAT**, which provides an inversion workflow of Full Waveform Adjoint Tomography
+for seismic wavefield imaging based on the `SPECFEM3D <https://github.com/geodynamics/specfem3d/>`_. 
+For further information and contact information please see below website:
 
 * Gitlab repository of *FWAT*: https://gitlab.com/wangkaim8/fwat.
 

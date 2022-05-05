@@ -1,15 +1,15 @@
-Install the package
-===================
+2. Install the package
+========================
 
-Install FWAT-v1.1
+Install FWAT
 -----------------
-The FWAT-v1.1 is based on the stable version of `SPECFEM3D <https://github.com/geodynamics/specfem3d/>`_ 
-last modified on Aug 30, 2018 with a commit number of 42abac6d18 on Github.
+The latest release of FWAT is ``FWAT v1.1``, which is based on the stable version of 
+`SPECFEM3D <https://github.com/geodynamics/specfem3d/>`_ last modified on Aug 30, 2018 
+with a commit number of 42abac6d18 on Github.
 
 
 .. code-block:: bash
 
-    $ python S0A_download_ASDF_MPI.py
     $: git clone --recursive https://github.com/geodynamics/specfem3d.git
     $: cd specfem3d
     $: git checkout -b fwat 42abac6d18
@@ -60,11 +60,11 @@ Notes on segmentation fault/floating
     NDIM = 1000000
     NWINDOWS = 2000
 
-How to Modify the FWAT to fit your version of `SPECFEM3D`
+How to Modify FWAT to fit your version of SPECFEM3D
 ------------------------------------------------------------
 
 If you have to use a different version, your may take
-the following steps to modify the FWAT package in order to fit your version
+the following steps to modify the **FWAT** package in order to fit your version
 of `SPECFEM3D`.
 
 .. code-block:: bash
@@ -78,7 +78,7 @@ of `SPECFEM3D`.
  b) Similary, modify save_adjoint_kernels_fwat.f90 according to your version of
     src/specfem3d/save_adjoint_kernels.f90
 
- step 2: Change rule.mk if necessary. The FWAT almost call all objects (*.o) that are
+ step 2: Change rule.mk if necessary. FWAT almost call all objects (*.o) that are
          required by the program "xspecfem3D". So refer to src/specfem3D/rule.mk if
          missing some *.o.
 

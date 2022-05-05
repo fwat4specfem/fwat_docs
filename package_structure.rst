@@ -1,8 +1,8 @@
-Package structure
-==================
+3. Package structure
+======================
 
 
-The FWAT package consists of some workflow-control bash scripts and programs in several folder.
+The **FWAT** package consists of some workflow-control parameter files and bash scripts in several folders.
 The structure of FWAT is summarized in Figure 2.
 
 .. figure:: figures/FWAT_structure.png
@@ -11,6 +11,14 @@ The structure of FWAT is summarized in Figure 2.
 
     Figure 2. Structure of FWAT.
 
+Terminology
+-----------
+* net:   network name, such as CI, TA, ...
+* stnm:  station name, such as CC01, CC02, ...
+* chan:  channel name, such as BXZ, ...
+* evnm:  event name
+* slen:  step length
+   
 
 
 Inputs
@@ -65,9 +73,12 @@ Outputs
   length of 0.010, the corresponding directory is ./solver/M01.slen0.010/evtnm1.
 
 
-Driven scripts
---------------
+Example scripts
+----------------
 
+
+Driven scripts
+~~~~~~~~~~~~~~~
 - `submit_job_fwat1.sh` is the driven script for running forward and adjoint simulations in **Stage I**.
   This script will call the PBS script `pbs_fwat1_fwd_measure_adj.sh` or SLURM script `sbash_fwat1_fwd_measure_adj.sh`
   and the results are stored in the directories **solver** and **misfit**.
@@ -78,8 +89,13 @@ Driven scripts
   This script will call the PBS script `pbs_fwat3_linesearch.sh` or SLURM script `sbash_fwat1_linesearch.sh`
   and the results are stored in the directories **solver** and **misfits**.
 
-Plot scripts
--------------
+fwat_params
+~~~~~~~~~~~~
+
+Examples of `FWAT.PAR` and `MEASUREMENT.PAR`
+
+Plot
+~~~~~~
 
 - **plots** contains some example scripts for plotting misfit, model, kernel, waveform.
 
