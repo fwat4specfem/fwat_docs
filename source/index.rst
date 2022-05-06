@@ -19,11 +19,19 @@ If you use FWAT for your research and prepare publications, please consider citi
 * Wang, K., Yang, Y., Jiang, C., Wang, Y., Tong, P., Liu, T. and Liu, Q., 2021. Adjoint tomography of ambient noise data and teleseismic P waves: Methodology and applications to central California. Journal of Geophysical Research: Solid Earth, 126(6), p.e2021JB021648.
 
 .. toctree::
-   :hidden:
    :maxdepth: 3
-   :glob:
+   :caption: Getting Started
+   :hidden:
 
    introduction
    installation
    package_structure
    tutorial
+
+.. toctree::
+   :maxdepth: 3
+   :caption: Resources
+   :hidden:
+
+   appendix/changelog
+   appendix/contributors

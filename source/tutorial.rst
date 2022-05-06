@@ -11,7 +11,7 @@ This tutorial will teach you how to perform an iterative full waveform inversion
 -----------------------------------
 
 Before running FWAT, the user should first make a new project by copy the folder **example_scripts**.
-For example, to build a new seismic project named ``FWAT_test``, run the following commands:
+For example, to build a new seismic project named `FWAT_test`, run the following commands:
 
 .. code-block:: bash
  
@@ -33,13 +33,13 @@ Run the following commands for the preparation of `SPECFEM3D`:
  $: mkdir OUTPUT_FILES
  $: mkdir OUTPUT_FILES/DATABASES_MPI 
 
-The input files for ``specfem3d`` should be tested to make sure that they are ready for running any simulations.
-This means that the user should set up the meshing files at DATA/meshfem3D_files, initial xyz model at 
-DATA/tomo_files or gll model in a user defined folder, and DATA/Par_file. Set APPROXIMATE_HESS_KL = .true.
-and USE_RHO_SCALING = .true. in Par_file, which will be used in **Stage II**.
+The input files for `SPECFEM3D` should be tested to make sure that they are ready for running any simulations.
+This means that the user should set up the meshing files at `DATA/meshfem3D_files`, initial xyz model at 
+`DATA/tomo_files` or gll model in a user defined folder, and DATA/Par_file. Set ``APPROXIMATE_HESS_KL = .true.``
+and ``USE_RHO_SCALING = .true.`` in Par_file, which will be used in **Stage II**.
 
-For testing if the mesh and initial model is correctly set up, set SAVE_MESH_FILE = .true. in Par_file and
-plot the velocity model procXXXXXX.bin files in OUTPUT_FILES/DATABASES_MPI, and set it back to .false. after the test.
+For testing if the mesh and initial model is correctly set up, set ``SAVE_MESH_FILE = .true.`` in Par_file and
+plot the velocity model `procXXXXXX.bin`` files in `OUTPUT_FILES/DATABASES_MPI`, and set it back to .false. after the test.
 Uncomment the following lines in the PBS script `pbs_fwat1_fwd_measure_adj.sh` or SLURM script `sbash_fwat1_fwd_measure_adj.sh`.
 
 .. code-block:: bash
@@ -150,10 +150,10 @@ The format of `MESUREMENT.PAR` is the same as that used in the software ``meaure
 
 .. note::
 
-   Remember to change tstart, DT, npts, imeas, channel, TSHIFT_MIN/TSHIFT_MAX, DLNA_MIN/DLNA_MAX, CC_MIN, ITAPER.
+   Remember to change ``tstart``, ``DT``, ``npts``, ``imeas``, ``channel``, ``TSHIFT_MIN/TSHIFT_MAX``, ``DLNA_MIN/DLNA_MAX``, ``CC_MIN``, ``ITAPER``.
 
-   For FWAT of diffrent data types (noise/tele), I recommend to use different parameter files, such as 
-   FWAT.PAR.noise/FWAT.PAR.tele, MEASUREMENT.PAR.noise/MEASUREMENT.PAR.tele.
+   For FWAT of different data types (``noise``/``tele``), I recommend to use different parameter files, such as 
+   `FWAT.PAR.noise/FWAT.PAR.tele`, `MEASUREMENT.PAR.noise/MEASUREMENT.PAR.tele`.
 
 1.4 Running forward and adjoint simulations (Stage I)
 -------------------------------------------------------
@@ -189,8 +189,8 @@ for each event set, in which the MPI program `xfwat1_fwd_measure_adj` is called 
  simu_type --- simulation type: noise, tele, leq
  run_opt   --- run_opt= 1 (fwd), 2 (fwd_meas), 3 (fwd_meas_adj)
 
-Note the program has an option (run_opt) to run forward simulations only (run_opt=1), or with measuring misfit and
-adjoint sources (run_opt=2), and adjoint simulations (run_opt=3). The program can be divided into three parts:
+Note the program has an option (``run_opt``) to run forward simulations only (``run_opt=1``), or with measuring misfit and
+adjoint sources (``run_opt=2``), and adjoint simulations (``run_opt=3``). The program can be divided into three parts:
 
 1. Making forward simulation directory. The program will make all forward simulation directories under the 
    directory **solver** (Figure 2) by looping over event sets defined by a variable ipart according to the file 
@@ -198,12 +198,12 @@ adjoint sources (run_opt=2), and adjoint simulations (run_opt=3). The program ca
 
 2. Running `run_preprocessing.f90`. We adopt a multi-scale strategy in misfit measurement, thus the author 
    should choose how many and what frequency bands needed in current iteration depending on the data,
-   then make changes to FWAT.PAR. Note in file `run_preprocessing.f90`, we have three options (simu_type) to
+   then make changes to FWAT.PAR. Note in file `run_preprocessing.f90`, we have three options (``simu_type``) to
    measure misfits and adjoint sources for data sets of noise, tele and leq. The misfits are stored in the 
    directory **misfits** as shown in Figure 2.
 
 3. Run adjoint simulations to obtain event kernels, sum and save them into one event gradient. In the `FWAT.PAR`,
-   we have an option (SAVE_OUTPUT_EACH_EVENT: .true.) to save each event kernel.
+   we have an option (``SAVE_OUTPUT_EACH_EVENT``: ``.true.``) to save each event kernel.
 
 1.5 Post-processing and model update (Stage II)
 -------------------------------------------------------
@@ -230,31 +230,30 @@ for a number of event sets, in which the MPI program `xfwat2_postproc_opt` is ca
 This program can be divided into three parts:
 
 - Summation and precondition of event kernels to obtain the final misfit gradient. The program will apply
-  a preconditioner (PRECOND_TYPE: default/z_precond in `FWAT.PAR`) to each event kernel and sum all 
-  preconditioned event kernels to obtain the final misfit gradient in the directory ./optimize/SUM_KERNELS_M??
-  (Figure 2). Gradient files are in the format of proc000???_alpha_kernel.bin, proc000???_beta_kernel.bin,
-  proc000???_rhop_kernel.bin. I would recommend using  PRECOND_TYPE: default for ANAT and 
-  PRECOND_TYPE: z_precond for TeleFWI.
+  a preconditioner (``PRECOND_TYPE``: ``default``/``z_precond`` in `FWAT.PAR`) to each event kernel and sum all 
+  preconditioned event kernels to obtain the final misfit gradient in the directory `./optimize/SUM_KERNELS_M??`
+  (Figure 2). Gradient files are in the format of `proc000???_alpha_kernel.bin`, `proc000???_beta_kernel.bin`,
+  `proc000???_rhop_kernel.bin`. I would recommend using  PRECOND_TYPE: ``default`` for ANAT and 
+  PRECOND_TYPE: ``z_precond`` for TeleFWI.
 
-- A 3-D Gaussian smoothing of the misfit gradient. Smoothed gradients are saved in the directory ./optimize/SUM_KERNELS_M??
-  with the format of proc000???_alpha_kernel_smooth.bin, proc000???_beta_kernel_smooth.bin, proc000???_rhop_kernel_smooth.bin.
+- A 3-D Gaussian smoothing of the misfit gradient. Smoothed gradients are saved in the directory `./optimize/SUM_KERNELS_M??`  with the format of `proc000???_alpha_kernel_smooth.bin`, `proc000???_beta_kernel_smooth.bin`, `proc000???_rhop_kernel_smooth.bin`.
 
-- Model update. There are two ways to update the model by either using a fixed step length (DO_LS: .false.) or an optimal
-  step length based on a line search method (DO_LS: .true.).
+- Model update. There are two ways to update the model by either using a fixed step length (``DO_LS``: ``.false.``) or an optimal
+  step length based on a line search method (``DO_LS``: ``.true.``).
 
 .. note::
 
- If you choose DO_LS: .false., then the model will be updated by a fix step length using MAX_SLEN. The output of the
- new model will be saved in the directory ./optimize/MODEL_M??. Then, go back to **Stage I** and II to run the next iteration.
+ If you choose ``DO_LS``: ``.false.``, then the model will be updated by a fix step length using ``MAX_SLEN``. The output of the
+ new model will be saved in the directory `./optimize/MODEL_M??`. Then, go back to **Stage I** and II to run the next iteration.
 
- If you choose DO_LS: .true., the program will generate a number of trial models according the STEP_LENS such as
- ./optimize/MODEL_M??_step0.020, ./optimize/MODEL_M??_step0.040, etc. Then, you should run a line search in **Stage III**.
+ If you choose ``DO_LS``: ``.true.``, the program will generate a number of trial models according the ``STEP_LENS`` such as
+ `./optimize/MODEL_M??_step0.020`, `./optimize/MODEL_M??_step0.040`, etc. Then, you should run a line search in **Stage III**.
 
 
 1.6 Line search for optimal step length (Stage III)
 -----------------------------------------------------
 
-After all trial models are generated (DO_LS: .true.), we use them to do a line search in order to obtain the optimal step length.
+After all trial models are generated (``DO_LS``: ``.true.``), we use them to do a line search in order to obtain the optimal step length.
 The script responsible for this is `submit_job_fwat3.sh`.
 
 .. code-block::
@@ -280,5 +279,5 @@ but with only forward simulations and misfit measuring.
 As long as all the forward simulations for different trial models are finished, the corresponding traveltime misfits
 are collected in the directory **outputs/M??**. Then, we use the script `plt_line_search.mtltiband.ANAT.bash` to plot
 the total misfit curve over step length and choose the optimal step length. After that, assign the trial model with the
-optimal step length (such as ./optimize/MODEL_M00_step0.040) to our new model (./optimize/MODEL_M01) for 
+optimal step length (such as `./optimize/MODEL_M00_step0.040`) to our new model (`./optimize/MODEL_M01`) for 
 running the next iteratoin. 

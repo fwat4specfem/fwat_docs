@@ -24,45 +24,6 @@ In **Stage III**, a line search method is adopted to determine the optimal step 
   xfwat3 for fast computations of small-scale inversions.
 - `xmeasure_adj` is a single program to test the `measure_adj <https://github.com/geodynamics/specfem3d/tree/master/utils/ADJOINT_TOMOGRAPHY_TOOLS/measure_adj>`_
 
-Developer
----------
-
-`Kai Wang <https://sites.google.com/view/kaikaiwang>`_, wangkaim8@gmail.com, maintainer 
-
-  The **FWAT** package (v 1.0) was first developed by Kai Wang during his postdoc studies at Macquarie University (2020/2-present) 
-  and the University of Toronto (2018/12-2019/12). This inversion package has been tested across several seismic projects
-  in research groups of Prof. `Liu Qinya <https://www.physics.utoronto.ca/~liuqy/>`_ and Prof. `Yingjie Yang <https://www.yingjieyang.com/>`_.
-
-
-*Bin He*, binhebj@gmail.com, joined in Mar 2021.
-
- Modified files that interface with the `SPECFEM3D` package to update **FWAT** v1.0 to v1.1. 
-
-*Nanqiao Du*, nanqiao.du@mail.utoronto.ca, jointed in Nov 2021. 
-
-  Working on API interfaces.
-
-*Mijian Xu*,  gomijianxu@gmail.com, jointed in Jan 2022.
-
-  Working on **FWAT** of receiver functions, python tools for model visualization.
-
-
-Changelog
----------
-
-``FWAT v1.1``, released on Mar 24, 2021
-
-Main contributors: Bin He, Kai Wang
-
-- Update FWAT based on the latest stable version of `SPECFEM3D` released on 2018-08-30.
-- Update FWAT.PAR.
-
-``FWAT v1.0``, released on Oct 6, 2020
-
-Main contributor: Kai Wang
-
-- FWAT of ambient noise , teleseismic P waves and their joint/alternating inversion. Codes tested in central California (Wang et al., 2020, JGR)
-- First version of the inversion workflow based on `SPECFEM3D` released on 2018-02-11.
 
 Support
 -------
