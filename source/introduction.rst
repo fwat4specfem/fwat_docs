@@ -27,6 +27,8 @@ In **Stage III**, a line search method is adopted to determine the optimal step 
 
 Support
 -------
+**Kai Wang** is currently supported by University of Science and Technology of China 
+
 **Kai Wang** was supported by the Postdoctoral Fellow program (2020/2-2021/10) at Macquarie University founded by the Australian Research Council Discovery Grant DP190102940.
 
 **Kai Wang** was supported by the Postdoctoral Fellow program (2018/12-2019/12) at the University of Toronto founded by NSERC Discovery Grant 487237. 
@@ -39,6 +41,6 @@ There are several aspects can be considered for improvements in the future, incl
 #. Add an inversion option for local earthquake (leq) tomography (``onging``, Kai Wang).
 #. Add CMT3D for source inversions prior to structure inversions (``onging``, Kai Wang).
 #. Python tool for model visualization (``ongoing``, Mijian Xu).
-#. Add multicomponent ANAT.
-#. Update **optimize** to invert for azimuthal anisotropy.
+#. Add multicomponent ANAT (``ongoing``, Kai Wang).
+#. Update **optimize** to invert for azimuthal anisotropy (``ongoing``, Kai Wang).
 
