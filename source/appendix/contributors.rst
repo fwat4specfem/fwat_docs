@@ -1,7 +1,7 @@
 Contributors
 --------------
 
-`Kai Wang <https://sites.google.com/view/kaikaiwang>`_, wangkaim8@gmail.com, maintainer 
+`Kai Wang <https://faculty.ustc.edu.cn/wangk>`_, wangk@ustc.edu.cn, maintainer 
 
   The **FWAT** package (v 1.0) was first developed by Kai Wang during his postdoc studies at Macquarie University (2020/2-present) 
   and the University of Toronto (2018/12-2019/12). This inversion package has been tested across several seismic projects

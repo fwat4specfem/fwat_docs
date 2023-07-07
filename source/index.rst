@@ -10,7 +10,7 @@ This is the documentation for the fortran inversion package of **FWAT**, which p
 for seismic wavefield imaging based on the `SPECFEM3D <https://github.com/geodynamics/specfem3d/>`_. 
 For further information and contact information please see below website:
 
-* Gitlab repository of *FWAT*: https://gitlab.com/wangkaim8/fwat.
+* Github repository of *FWAT*: https://github.com/fwat4specfem/fwat.
 
 If you use FWAT for your research and prepare publications, please consider citing **FWAT**:
 

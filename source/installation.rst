@@ -7,6 +7,8 @@ The latest release of FWAT is ``FWAT v1.1``, which is based on the stable versio
 `SPECFEM3D <https://github.com/geodynamics/specfem3d/>`_ last modified on Aug 30, 2018 
 with a commit number of 42abac6d18 on Github.
 
+.. note::
+    Please check README of **FWAT** for the lastest instruction of installation.
 
 .. code-block:: bash
 
@@ -14,7 +16,7 @@ with a commit number of 42abac6d18 on Github.
     $: cd specfem3d
     $: git checkout -b fwat 42abac6d18
     $: cd src
-    $: git clone --recursive https://gitlab.com/wangkaim8/fwat.git
+    $: git clone --recursive https://github.com/fwat4specfem/fwat.git
     $: mv fwat fullwave_adjoint_tomo
     $: cd ..
 
